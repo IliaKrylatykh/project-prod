@@ -2,6 +2,7 @@ module.exports = {
 	env: {
 		browser: true,
 		es2021: true,
+		jest: true,
 	},
 	extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended'],
 	parser: '@typescript-eslint/parser',
@@ -27,7 +28,7 @@ module.exports = {
 		],
 		'import/no-unresolved': 'off',
 		'import/prefer-default-export': 'off',
-		'no-unused-vars': 'warn',
+		'no-unused-vars': off,
 		'react/require-default-props': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'react/jsx-props-no-spreading': 'warn',
@@ -41,6 +42,8 @@ module.exports = {
 			{ markupOnly: true, ignoreAttribute: ['to'] },
 		],
 		'arrow-parens': ['error', 'as-needed'],
+		'linebreak-style': 0,
+		'comma-dangle': 0,
 	},
 	globals: {
 		__IS_DEV__: true,
