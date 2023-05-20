@@ -44,6 +44,7 @@ module.exports = {
 		'max-len': ['warn', { ignoreComments: true, code: 100 }],
 		'arrow-body-style': [0, 'as-needed'],
 		'react/jsx-wrap-multilines': 'off',
+		'no-console': 'off',
 	},
 	globals: {
 		__IS_DEV__: true,
