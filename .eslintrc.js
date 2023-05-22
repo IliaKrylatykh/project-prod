@@ -4,7 +4,13 @@ module.exports = {
 		es2021: true,
 		jest: true,
 	},
-	extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended'],
+	extends: [
+		'plugin:react/recommended',
+		'airbnb',
+		'plugin:i18next/recommended',
+		'plugin:storybook/recommended',
+		'prettier',
+	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaFeatures: {
@@ -17,14 +23,23 @@ module.exports = {
 	rules: {
 		'react/jsx-indent': [2, 'tab'],
 		'react/jsx-indent-props': [2, 'tab'],
-		indent: [2, 'tab', { SwitchCase: 1, VariableDeclarator: 1 }],
+		indent: [
+			0,
+			'tab',
+			{
+				SwitchCase: 1,
+				VariableDeclarator: 1,
+			},
+		],
 		semi: [2, 'never'],
 		'jsx-quotes': [2, 'prefer-single'],
 		'react/prop-types': 0,
 		'no-tabs': 0,
 		'react/jsx-filename-extension': [
 			2,
-			{ extensions: ['.js', '.jsx', '.tsx'] },
+			{
+				extensions: ['.js', '.jsx', '.tsx'],
+			},
 		],
 		'import/no-unresolved': 'off',
 		'import/prefer-default-export': 'off',
@@ -37,11 +52,23 @@ module.exports = {
 		'import/extensions': 'off',
 		'import/no-extraneous-dependencies': 'off',
 		'no-underscore-dangle': 'off',
-		'i18next/no-literal-string': ['error', { markupOnly: true }],
+		'i18next/no-literal-string': [
+			'error',
+			{
+				markupOnly: true,
+				ignoreAttribute: ['data-testid', 'to'],
+			},
+		],
 		'arrow-parens': ['error', 'as-needed'],
 		'linebreak-style': 0,
 		'comma-dangle': 0,
-		'max-len': ['warn', { ignoreComments: true, code: 100 }],
+		'max-len': [
+			'warn',
+			{
+				ignoreComments: true,
+				code: 100,
+			},
+		],
 		'arrow-body-style': [0, 'as-needed'],
 		'react/jsx-wrap-multilines': 'off',
 		'no-console': 'off',
@@ -49,4 +76,18 @@ module.exports = {
 	globals: {
 		__IS_DEV__: true,
 	},
+	overrides: [
+		{
+			files: ['**/src/**/*.test.{ts,tsx}'],
+			rules: {
+				'i18next/no-literal-string': 'off',
+			},
+		},
+		{
+			files: ['src/**/*.test.{ts,tsx}', 'config/**/*{ts,tsx}'],
+			rules: {
+				'import/no-extraneous-dependencies': 'off',
+			},
+		},
+	],
 }
